@@ -1,4 +1,4 @@
-import { MAKE_MOVE } from "../constants/actions_types";
+import * as types from "../constants/actions_types";
 import undoable, { distinctState } from 'redux-undo'
 
 const initialState = {
@@ -29,7 +29,7 @@ function calculateWinner(squares) {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case MAKE_MOVE:
+    case types.MAKE_MOVE:
       const squares = state.squares.slice();
       if (squares[action.cell] || calculateWinner(squares)) return state;
       squares[action.cell] = state.xIsNext ? 'X' : 'O'
@@ -38,6 +38,9 @@ const rootReducer = (state = initialState, action) => {
         xIsNext: !state.xIsNext,
         winner: calculateWinner(squares)
       };
+
+    case types.NEW_GAME:
+      return initialState
 
     default:
       return state;

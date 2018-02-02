@@ -1,8 +1,14 @@
-import { MAKE_MOVE } from "../constants/actions_types";
+import * as types from "../constants/actions_types";
 
 export const makeMove = (cell) => {
   return {
-    type: MAKE_MOVE,
+    type: types.MAKE_MOVE,
     cell: cell
+  }
+}
+
+export const newGame = () => {
+  return {
+    type: types.NEW_GAME
   }
 }

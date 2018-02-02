@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Board from './Board'
 import UndoRedo from './UndoRedo'
+import NewGame from './NewGame'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
@@ -23,6 +24,7 @@ class ConnectedGame extends Component {
         <div className="game-info">
           <div>{status}</div>
           <UndoRedo />
+          <NewGame />
         </div>
       </div>
     );
