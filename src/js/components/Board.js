@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import Square from './Square'
+import { connect } from 'react-redux';
 
-class Board extends Component {
+const mapStateToProps = (state) => {
+  return {squares: state.squares}
+}
+
+class ConnectedBoard extends Component {
   renderSquare(i){
-    return <Square />
+    return <Square value={i} />
   }
 
   render() {
@@ -12,23 +17,25 @@ class Board extends Component {
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {this.renderSquare(this.props.squares[0])}
+          {this.renderSquare(this.props.squares[1])}
+          {this.renderSquare(this.props.squares[2])}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {this.renderSquare(this.props.squares[3])}
+          {this.renderSquare(this.props.squares[4])}
+          {this.renderSquare(this.props.squares[5])}
         </div>
         <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {this.renderSquare(this.props.squares[6])}
+          {this.renderSquare(this.props.squares[7])}
+          {this.renderSquare(this.props.squares[8])}
         </div>
       </div>
     );
   }
 }
+
+const Board = connect(mapStateToProps)(ConnectedBoard);
 
 export default Board;
