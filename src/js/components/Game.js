@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Board from './Board'
+import UndoRedo from './UndoRedo'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
-  return {xIsNext: state.xIsNext, winner: state.winner}
+  return {xIsNext: state.present.xIsNext, winner: state.present.winner}
 }
 
 class ConnectedGame extends Component {
@@ -21,7 +22,7 @@ class ConnectedGame extends Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <UndoRedo />
         </div>
       </div>
     );

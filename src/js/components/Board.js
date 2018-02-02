@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { makeMove } from '../actions'
 
 const mapStateToProps = (state) => {
-  return {squares: state.squares}
+  return {squares: state.present.squares}
 }
 
 const mapDispatchToProps = dispatch => {

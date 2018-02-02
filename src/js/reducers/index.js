@@ -1,4 +1,5 @@
 import { MAKE_MOVE } from "../constants/actions_types";
+import undoable, { distinctState } from 'redux-undo'
 
 const initialState = {
   squares: Array(9).fill(null),
@@ -43,4 +44,8 @@ const rootReducer = (state = initialState, action) => {
   }
 }
 
-export default rootReducer;
+const undoableRootReducer = undoable(rootReducer,{
+  filter: distinctState()
+})
+
+export default undoableRootReducer;
